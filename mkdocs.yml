@@ -65,4 +65,3 @@ markdown_extensions:
 
 plugins:
   - search
-  - autorefs
