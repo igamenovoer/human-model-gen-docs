@@ -3,10 +3,6 @@ site_description: Documentation for classes in the hmodel_gen module
 site_author: HumanModelGeneration Project
 site_url: https://igamenovoer.github.io/human-model-gen-docs
 
-# Tell MkDocs where the documentation files are
-docs_dir: .
-site_dir: site
-
 theme:
   name: material
   palette:
