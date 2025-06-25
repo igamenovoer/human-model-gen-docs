@@ -1,0 +1,63 @@
+site_name: HumanModelGeneration - hmodel_gen Classes Documentation
+site_description: Documentation for classes in the hmodel_gen module
+site_author: HumanModelGeneration Project
+site_url: https://igamenovoer.github.io/human-model-gen-docs
+
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - BVH Parser:
+    - Overview: bvh_parser/index.md
+    - SingleJoint: bvh_parser/single_joint.md
+    - SinglePose: bvh_parser/single_pose.md
+    - BVHData: bvh_parser/bvh_data.md
+    - BVHFlatData: bvh_parser/bvh_flat_data.md
+  - SMPL Objective Builder:
+    - Overview: smpl_objective_builder/index.md
+    - SmplObjectiveBuilder: smpl_objective_builder/smpl_objective_builder.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
