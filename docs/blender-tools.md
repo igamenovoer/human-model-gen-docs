@@ -2,6 +2,22 @@
 
 The `blender_tools` directory provides Python APIs for human-friendly remote control of Blender via the MCP (Model Context Protocol) server. These tools enable programmatic manipulation of Blender scenes, asset management, and rendering operations through clean, Pythonic interfaces.
 
+## Directory Structure
+
+```
+blender_tools/
+├── README.md                    # Main documentation
+├── __init__.py                  # Package interface with backwards compatibility
+└── remote/                      # Remote control modules
+    ├── __init__.py              # Remote package interface
+    ├── data_types.py            # Data structures (SceneObject, BlenderMCPError)
+    ├── blender_mcp_client.py    # Low-level MCP communication
+    ├── blender_asset_manager.py # Asset library management
+    └── blender_scene_manager.py # 3D scene manipulation
+```
+
+The modular structure separates concerns while maintaining backwards compatibility through the main package `__init__.py`.
+
 ## Overview
 
 The Blender MCP Client provides three main classes for different aspects of Blender control:
@@ -20,7 +36,7 @@ The Blender MCP Client provides three main classes for different aspects of Blen
 ## Quick Start
 
 ```python
-from blender_tools.blender_mcp_client import quick_scene_setup
+from blender_tools.remote import quick_scene_setup
 
 # One-liner setup for all functionality
 client, assets, scene = quick_scene_setup()
@@ -204,7 +220,7 @@ success = scene.render_image(
 All operations can raise `BlenderMCPError` exceptions:
 
 ```python
-from blender_tools.blender_mcp_client import BlenderMCPError
+from blender_tools.remote import BlenderMCPError
 
 try:
     client = connect_to_blender()
@@ -300,7 +316,7 @@ for i, obj in enumerate(objects):
 ### 1. Scene Setup and Asset Import
 
 ```python
-from blender_tools.blender_mcp_client import quick_scene_setup
+from blender_tools.remote import quick_scene_setup
 import numpy as np
 
 # Setup
@@ -403,7 +419,7 @@ The blender_tools integrate seamlessly with the existing project workflow:
 
 ```python
 # Combined workflow example
-from blender_tools.blender_mcp_client import quick_scene_setup
+from blender_tools.remote import quick_scene_setup
 from blender_skel import RiggedMesh
 
 # Setup Blender remote control
@@ -524,7 +540,7 @@ Windows Blender ──[MCP Protocol]──→ Docker Container
 
 **Example cross-platform workflow:**
 ```python
-from blender_tools.blender_mcp_client import quick_scene_setup
+from blender_tools.remote import quick_scene_setup
 import trimesh
 
 # Connect to remote Blender (auto-detects Docker/local)
@@ -624,7 +640,7 @@ debug_scene = scene.get_object_as_glb(
 
 **Error handling:**
 ```python
-from blender_tools.blender_mcp_client import BlenderMCPError
+from blender_tools.remote import BlenderMCPError
 
 try:
     glb_scene = scene.get_object_as_glb("NonExistentObject")
@@ -637,7 +653,7 @@ except BlenderMCPError as e:
 
 **Combine with existing HumanModelGeneration workflows:**
 ```python
-from blender_tools.blender_mcp_client import quick_scene_setup
+from blender_tools.remote import quick_scene_setup
 from blender_skel import RiggedMesh
 
 # Setup remote Blender control
